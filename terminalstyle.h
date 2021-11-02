@@ -80,6 +80,8 @@ void terminalRectangle(int, int, char *, char *);
 void terminalTextRectangle(int, int, char, char);
 void saveCursorState(void);
 void restoreCursorState(void);
+void terminalRawInput(void);
+void terminalCookedInput(void);
 
 char text_color[25];
 char background_color[25];
@@ -364,4 +366,15 @@ void saveCursorState() {
 
 void restoreCursorState() {
 	printf("\0338");
+}
+
+// This function will make the terminal to immidietly accept input so an enter keypress is not required
+void terminalRawInput()
+{
+	system ("/bin/stty raw");
+}
+
+void terminalCookedInput()
+{
+	system ("/bin/stty cooked");
 }
